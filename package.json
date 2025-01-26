@@ -1,0 +1,29 @@
+{
+  "name": "restaurant-management-system",
+  "version": "1.0.0",
+  "description": "This is a management system created using backend technologies such as NodeJS, ExpressJS, and MongoDB for managing a restaurant online",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server.js"
+  },
+  "keywords": [
+    "food",
+    "restaurant",
+    "order"
+  ],
+  "author": "Sumit Kumar Shaw",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
+    "morgan": "^1.10.0",
+    "nanoid": "^5.0.9"
+  }
+}
