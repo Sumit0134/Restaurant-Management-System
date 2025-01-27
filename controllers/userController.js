@@ -1,6 +1,7 @@
 const userModel = require("../models/userModel");
 
 const bcrypt = require("bcryptjs");
+const cookieParser = require("cookie-parser");
 
 //get user
 const getUserController = async (req, res) => {
@@ -156,6 +157,15 @@ const resetPasswordController = async (req, res) => {
 const deleteUserController = async (req, res) => {
   try {
     const user = await userModel.findOneAndDelete({ _id: req.body.id });
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        message: "Account not found, please register",
+      });
+    }
+    
+    res.clearCookie("token");
+
     return res.status(200).json({
       success: true,
       message: "Account deleted successfully",
