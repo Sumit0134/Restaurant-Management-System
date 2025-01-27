@@ -41,7 +41,6 @@ const registerUserController = async (req, res) => {
       { expiresIn: "7d" }
     );
     res.cookie("token", token);
-    console.log(token);
 
     return res.status(201).send({
       success: true,

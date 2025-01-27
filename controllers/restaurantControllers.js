@@ -1,6 +1,10 @@
 const restaurantDetailsModel = require("../models/restaurantDetailsModel");
 const restaurantModel = require("../models/restaurantModel");
 
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
+
 //get restaurant details controller
 const getRestaurantDetailsController = async (req, res) => {
   try {
@@ -111,8 +115,131 @@ const updateRestaurantDetailsController = async (req, res) => {
   }
 };
 
+//update password
+const updateRestaurantPasswordController = async (req, res) => {
+  try {
+    console.log(req.body);
+    const restaurant = await restaurantModel.findOne({ _id: req.body.id });
+    console.log(restaurant);
+    if (!restaurant) {
+      return res.status(400).json({
+        success: false,
+        message: "Restaurant does not exist, please create a restaurant first",
+      });
+    }
+
+    const { oldPassword, newPassword } = req.body;
+
+    if (!oldPassword || !newPassword) {
+      return res.status(400).json({
+        success: false,
+        message: "Star marked fields are required",
+      });
+    }
+
+    bcrypt.compare(oldPassword, restaurant.password, async (error, result) => {
+      if (result) {
+        var salt = bcrypt.genSaltSync(10);
+        const hashedPassword = bcrypt.hashSync(newPassword, salt);
+
+        restaurant.password = hashedPassword;
+
+        await restaurant.save();
+
+        return res.status(200).json({
+          success: true,
+          message: "Password updated successfully",
+        });
+      } else {
+        return res.status(400).json({
+          success: false,
+          message: "Old password is incorrect",
+          error,
+        });
+      }
+    });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      message: "Something went wrong, please try again",
+      error,
+    });
+  }
+};
+
+//reset password
+const resetRestaurantPasswordController = async (req, res) => {
+  try {
+    const { ownerEmail, newPassword } = req.body;
+
+    if (!ownerEmail || !newPassword) {
+      return res.status(400).json({
+        success: false,
+        message: "Star marked fields are required",
+      });
+    }
+
+    const restaurant = await restaurantModel.findOne({ ownerEmail });
+    if (!restaurant) {
+      return res.status(400).json({
+        success: false,
+        message: "Restaurant does not exist, please create a restaurant first",
+      });
+    }
+
+    var salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(newPassword, salt);
+
+    restaurant.password = hashedPassword;
+
+    await restaurant.save();
+
+    return res.status(200).json({
+      success: true,
+      message: "Password reset successfully",
+    });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      message: "Something went wrong, please try again",
+      error,
+    });
+  }
+};
+
+//delete restaurant
+const deleteRestaurantController = async (req, res) => {
+  try {
+    const restaurant = await restaurantModel.findOneAndDelete({
+      _id: req.body.id,
+    });
+    if (!restaurant) {
+      return res.status(400).json({
+        success: false,
+        message: "Restaurant does not exist, please create a restaurant first",
+      });
+    }
+
+    res.clearCookie("token");
+
+    return res.status(200).json({
+      success: true,
+      message: "Restaurant deleted successfully",
+    });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      message: "Something went wrong, please try again",
+      error,
+    });
+  }
+};
+
 //export
 module.exports = {
   getRestaurantDetailsController,
   updateRestaurantDetailsController,
+  updateRestaurantPasswordController,
+  resetRestaurantPasswordController,
+  deleteRestaurantController,
 };

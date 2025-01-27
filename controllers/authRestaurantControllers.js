@@ -3,7 +3,6 @@ const restaurantModel = require("../models/restaurantModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
-const nanoid = require("nanoid");
 
 //create restaurant
 const registerRestaurantController = async (req, res) => {
@@ -31,11 +30,16 @@ const registerRestaurantController = async (req, res) => {
       });
     }
 
+    const existingRestaurant = await restaurantModel.findOne({ ownerEmail });
+    if (existingRestaurant) {
+      return res.status(400).json({
+        success: false,
+        message: "Restaurant with this email already exists, please login",
+      });
+    }
+
     var salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
-
-    const alphabet = "0123456789";
-    const uniqueID = nanoid.customAlphabet(alphabet, 5);
 
     const createdRestaurant = await restaurantModel.create({
       restaurantName,
@@ -44,7 +48,6 @@ const registerRestaurantController = async (req, res) => {
       ownerEmail,
       password: hashedPassword,
       restaurantAddress,
-      restaurantID: uniqueID(),
     });
 
     const token = jwt.sign(
@@ -53,8 +56,6 @@ const registerRestaurantController = async (req, res) => {
       { expiresIn: "7d" }
     );
     res.cookie("token", token);
-
-    createdRestaurant.password = undefined;
 
     return res.status(200).json({
       success: true,
@@ -130,6 +131,7 @@ const loginRestaurantController = async (req, res) => {
 const logoutRestaurantController = (req, res) => {
   try {
     res.clearCookie("token");
+
     return res.status(200).send({
       success: true,
       message: "Logged out successfully",
