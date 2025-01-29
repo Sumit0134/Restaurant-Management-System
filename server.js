@@ -40,6 +40,7 @@ const userRoutes = require("./routes/userRoutes");
 const authRestaurantRoutes = require("./routes/authRestaurantRoutes");
 const restaurantRoutes = require("./routes/restaurantRoutes");
 const getSingleAndAllRestaurants = require("./routes/getSingleAndAllRestaurants");
+const categoryRoutes = require("./routes/categoryRoutes");
 
 //routes
 app.use("/api/v1/test", testRoutes);
@@ -48,13 +49,14 @@ app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/authrestaurant", authRestaurantRoutes);
 app.use("/api/v1/restaurant", restaurantRoutes);
 app.use("/api/v1/getsingleandallrestaurants",  getSingleAndAllRestaurants);
+app.use("/api/v1/category", categoryRoutes);
 
 //default
 app.get("/", (req, res) => {
   return res
     .status(200)
     .send(
-      `<h1 style="color: orange;">Welcome to Online Restaurant Server App</h1>`
+      `<h1 style="color: orange;">Welcome to Restaurant Management System</h1>`
     );
 });
 
