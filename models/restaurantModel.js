@@ -6,6 +6,7 @@ const restaurantSchema = new mongoose.Schema(
     restaurantName: {
       type: String,
       required: [true, "Restaurant name is required"],
+      unique: true,
     },
 
     ownerName: {
@@ -16,7 +17,6 @@ const restaurantSchema = new mongoose.Schema(
     ownerEmail: {
       type: String,
       required: [true, "Owner email is required"],
-      unique: true,
     },
 
     password: {

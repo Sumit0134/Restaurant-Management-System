@@ -30,11 +30,11 @@ const registerRestaurantController = async (req, res) => {
       });
     }
 
-    const existingRestaurant = await restaurantModel.findOne({ ownerEmail });
+    const existingRestaurant = await restaurantModel.findOne({ restaurantName });
     if (existingRestaurant) {
       return res.status(400).json({
         success: false,
-        message: "Restaurant with this email already exists, please login",
+        message: "Restaurant with this name already exists, please login",
       });
     }
 
