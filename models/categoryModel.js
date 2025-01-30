@@ -7,10 +7,10 @@ const categorySchema = new mongoose.Schema({
         required: [true, "Category name is required"],
     },
 
-    foodItems: {
+    foodItems: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "foodItems",
-    }
+    }],
 }, {timestamps: true});
 
 //export

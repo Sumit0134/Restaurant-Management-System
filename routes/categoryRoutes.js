@@ -12,6 +12,7 @@ const {
 } = require("../controllers/categoryControllers");
 const { isLoggedIn } = require("../middlewares/authMiddleware");
 
+//routes
 //category routes POST
 router.post("/create-category", isLoggedIn, createCategoryController);
 

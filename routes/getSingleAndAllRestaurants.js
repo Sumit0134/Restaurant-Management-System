@@ -9,6 +9,7 @@ const {
   getSingleRestaurantController,
 } = require("../controllers/getSingleAndAllRestaurantsControllers");
 
+//routes
 //get all restaurants GET
 router.get("/get-all-restaurants", getAllRestaurantsController);
 

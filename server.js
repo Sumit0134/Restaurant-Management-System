@@ -41,6 +41,7 @@ const authRestaurantRoutes = require("./routes/authRestaurantRoutes");
 const restaurantRoutes = require("./routes/restaurantRoutes");
 const getSingleAndAllRestaurants = require("./routes/getSingleAndAllRestaurants");
 const categoryRoutes = require("./routes/categoryRoutes");
+const foodRoutes = require("./routes/foodRoutes");
 
 //routes
 app.use("/api/v1/test", testRoutes);
@@ -50,6 +51,7 @@ app.use("/api/v1/authrestaurant", authRestaurantRoutes);
 app.use("/api/v1/restaurant", restaurantRoutes);
 app.use("/api/v1/getsingleandallrestaurants",  getSingleAndAllRestaurants);
 app.use("/api/v1/category", categoryRoutes);
+app.use("/api/v1/food", foodRoutes);
 
 //default
 app.get("/", (req, res) => {
