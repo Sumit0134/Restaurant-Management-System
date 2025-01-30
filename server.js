@@ -49,7 +49,7 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/authrestaurant", authRestaurantRoutes);
 app.use("/api/v1/restaurant", restaurantRoutes);
-app.use("/api/v1/getsingleandallrestaurants",  getSingleAndAllRestaurants);
+app.use("/api/v1/getsingleandallrestaurants", getSingleAndAllRestaurants);
 app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/food", foodRoutes);
 

@@ -137,4 +137,8 @@ const deleteFoodController = async (req, res) => {
 };
 
 //export
-module.exports = { createFoodController, updateFoodController, deleteFoodController };
+module.exports = {
+  createFoodController,
+  updateFoodController,
+  deleteFoodController,
+};

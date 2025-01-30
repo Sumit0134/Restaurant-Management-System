@@ -1,17 +1,22 @@
-const mongoose = require("mongoose");   
+const mongoose = require("mongoose");
 
 //category schema
-const categorySchema = new mongoose.Schema({
+const categorySchema = new mongoose.Schema(
+  {
     categoryName: {
-        type: String,
-        required: [true, "Category name is required"],
+      type: String,
+      required: [true, "Category name is required"],
     },
 
-    foodItems: [{
+    foodItems: [
+      {
         type: mongoose.Schema.Types.ObjectId,
         ref: "foodItems",
-    }],
-}, {timestamps: true});
+      },
+    ],
+  },
+  { timestamps: true }
+);
 
 //export
 module.exports = mongoose.model("categories", categorySchema);

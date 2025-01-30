@@ -163,7 +163,7 @@ const deleteUserController = async (req, res) => {
         message: "Account not found, please register",
       });
     }
-    
+
     res.clearCookie("token");
 
     return res.status(200).json({
