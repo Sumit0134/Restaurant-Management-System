@@ -1,0 +1,31 @@
+{
+	"info": {
+		"_postman_id": "8b74abea-e307-42b2-9755-444aaf43ead0",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38747518"
+	},
+	"item": [
+		{
+			"name": "Test Api",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}",
+					"host": [
+						"{{baseurl}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseurl",
+			"value": "http://localhost:3000",
+			"type": "default"
+		}
+	]
+}

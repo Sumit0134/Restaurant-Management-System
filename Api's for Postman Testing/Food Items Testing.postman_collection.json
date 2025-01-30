@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "169ca2d0-efe6-4264-8409-36055ef2b58e",
+		"name": "Food Items Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38747518"
+	},
+	"item": [
+		{
+			"name": "Create Food Items",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"foodName\": \"FoodItemName\", //example: Pizza\n    \"price\": 0,\n    \"category\": \"ObjectID\", //write category ObjectID in place of ObjectID\n    \"restaurant\": \"RestaurantObjectID\", //write restaurant ObjectID in place of RestaurantObjectID\n    \"quantity\": 0\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/create-food",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"create-food"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Food Items",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"category\": \"ObjectID\" //write category ObjectID in place of ObjectID\n}\n\n//write foodItem ObjectID in place of id",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/update-food/id",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"update-food",
+						"id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Food Items",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "//write foodItem ObjectID in place of id",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/delete-food/id",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"delete-food",
+						"id"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseurl",
+			"value": "http://localhost:3000/api/v1/food",
+			"type": "default"
+		}
+	]
+}

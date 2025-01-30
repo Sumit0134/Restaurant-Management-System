@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "ed7f8778-2693-4a21-96e3-723aea44852c",
+		"name": "Category Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38747518"
+	},
+	"item": [
+		{
+			"name": "Create Category",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"categoryName\": \"CategoryName\" //example: Chinese\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/create-category",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"create-category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/get-all-categories",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"get-all-categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Category",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "//write category ObjectID in place of id",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/delete-category/id",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"delete-category",
+						"id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Category",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"categoryName\": \"CategoryName\" //example, Chinese==>SouthIndian\n}\n\n//write category ObjectID in place of id",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/update-category/679a4cf99737347748212ac6",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"update-category",
+						"679a4cf99737347748212ac6"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseurl",
+			"value": "http://localhost:3000/api/v1/category",
+			"type": "default"
+		}
+	]
+}

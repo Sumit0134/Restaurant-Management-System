@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "0e9e3202-20e1-43ed-af98-113509018e94",
+		"name": "Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38747518"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"UserName\",\n    \"email\": \"UserEmailAddress\",\n    \"password\": \"UserPassword\",\n    \"phone\": \"UserPhoneNumber\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/register",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"UserEmailAddress\",\n    \"password\": \"UserPassword\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/login",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/logout",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseurl",
+			"value": "http://localhost:3000/api/v1/auth",
+			"type": "default"
+		}
+	]
+}

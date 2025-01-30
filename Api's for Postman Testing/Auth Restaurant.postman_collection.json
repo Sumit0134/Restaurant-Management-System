@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "e128ac3e-cb87-4c10-8a62-832b09ede562",
+		"name": "Auth Restaurant",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38747518"
+	},
+	"item": [
+		{
+			"name": "Register Restaurant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"restaurantName\": \"RestaurantName\",\n      \"ownerName\": \"OwnerName\",\n      \"ownerPhone\": \"OnwerPhoneNumber\",\n      \"ownerEmail\": \"OwnerEmailAddress\",\n      \"password\": \"OwnerPassword\",\n      \"restaurantAddress\": \"RestaurantAddress\" \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/register",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Restaurant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ownerEmail\": \"OwnerEmailAddress\",\n    \"password\": \"OwnerPassword\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/login",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout Restaurant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/logout",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseurl",
+			"value": "http://localhost:3000/api/v1/authrestaurant",
+			"type": "default"
+		}
+	]
+}

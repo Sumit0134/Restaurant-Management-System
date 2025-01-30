@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "a2ae7075-91fc-4a01-bc31-13f3fdaad128",
+		"name": "GetSingleAndAllRestaurants",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38747518"
+	},
+	"item": [
+		{
+			"name": "Get All Restaurants",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/get-all-restaurants",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"get-all-restaurants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single Restaurant with Name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "//write restaurantName in place of name regardless of cases",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/get-single-restaurant/name",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"get-single-restaurant",
+						"name"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseurl",
+			"value": "http://localhost:3000/api/v1/getsingleandallrestaurants",
+			"type": "default"
+		}
+	]
+}
